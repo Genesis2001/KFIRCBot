@@ -150,7 +150,7 @@ function Timer() {
 	}
 
 //	if (KFGameType(Level.Game).bWaveInProgress == False && KFGameType(Level.Game).bWaveBossInProgress == False && KFGameType(Level.Game).WaveNum > 0 && endWaveAnnounced == False && lastWave == True) {
-//		ircSend(col(KFIRC(Owner).Default.Color1) $ "FINAL Wave:" @ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).WaveNum @ col(KFIRC(Owner).Default.Color1) $ "ended. Wave Time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(waveTime));
+//		ircSend(col(KFIRC(Owner).Default.Color1) $ "Final Wave:" @ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).WaveNum @ col(KFIRC(Owner).Default.Color1) $ "ended. Wave Time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(waveTime));
 //		ircSend(" ");
 //		SStatus();
 //		ircSend(col(KFIRC(Owner).Default.Color1) $ "Total game time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(KFGameType(Level.Game).ElapsedTime));
@@ -171,7 +171,7 @@ function Timer() {
 	}
 
 	if (KFGameType(Level.Game).bWaveBossInProgress == True && KFGameType(Level.Game).WaveNum >= KFGameType(Level.Game).FinalWave && KFGameType(Level.Game).WaveNum >= 0 && endWaveAnnounced == True){
-		ircSend(col(KFIRC(Owner).Default.Color1) $ "FINAL Wave:" @ col(KFIRC(Owner).Default.Color2) $ "PATRIARCH!!!" @ col(KFIRC(Owner).Default.Color1) $ "starting.");
+		ircSend(col(KFIRC(Owner).Default.Color1) $ "Final Wave:" @ col(KFIRC(Owner).Default.Color2) $ "Patriarch!" @ col(KFIRC(Owner).Default.Color1) $ "starting.");
 		lastWave = True;
 		endWaveAnnounced = False;
 	}

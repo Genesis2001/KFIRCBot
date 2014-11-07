@@ -25,7 +25,7 @@ function Broadcast(Actor Sender, coerce string Msg, optional name Type) {
 
 	if (Type == 'DeathMessage')
     {
-		ircSend(col(KFIRC(Owner).Default.Color3) $ "[KILL]" @ col(KFIRC(Owner).Default.Color1) $ "Death:" @ col(KFIRC(Owner).Default.Color2) $ Msg);
+		ircSend(col(KFIRC(Owner).Default.Color3) $ "[KILL]" @ col(KFIRC(Owner).Default.Color2) $ Msg);
 	}
 
 	Super.Broadcast(Sender, Msg, Type);
