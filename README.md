@@ -54,6 +54,7 @@ Resolved irc.freenode.net (130.239.18.172)
 ```
 
 Keep in mind that if you won't configure bot, it will use default settings listed in [Main class].
+
 [Main class]: https://github.com/EsEnZeT/KFIRCBot/blob/master/Classes/KFIRC.uc
 
 
