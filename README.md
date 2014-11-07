@@ -34,15 +34,15 @@ hideIP= (0 - show client IP on join; 1 - don't)
 color1= (ex.: 04) (message types)
 color2= (ex.: 12) (messages)
 color3= (ex.: 09) (chat prefixes)
-aO= (1 - allow to execute !commands by OP(s)/+o flag; 0 - don't)
-aV= (1 - allow to execute !commands by VOICE(s)/+v flag; 0 - don't)
+aO= (1 - allow to execute !commands by OP'd users (+q, +a, +o, +h); 0 - don't)
+aV= (1 - allow to execute !commands by VOICE'd users (+v); 0 - don't)
 aAll= (1 - allow all users to execute !commands; 0 - don't)
 fLog= (1 - log active gameplay events to channel on join; 0 - don't + not recommended)
 bDebug= (1 - show messages in server console during connecting to irc server; 0 - don't)
 rDemo= (1 - records demos; 0 - don't)
 ```
 [You can find example configuration here].
-[You can find example configuration here]: https://raw.github.com/EsEnZeT/KFIRCBot/master/example.ini
+[You can find example configuration here]: https://raw.github.com/Genesis2001/KFIRCBot/master/example.ini
 
 Properly installed mutator should show in the server console something like this:
 ```
@@ -55,7 +55,7 @@ Resolved irc.freenode.net (130.239.18.172)
 ```
 
 Keep in mind that if you won't configure bot, it will use default settings listed in [Main class].
-[Main class]: https://github.com/EsEnZeT/KFIRCBot/blob/master/Classes/KFIRC.uc
+[Main class]: https://github.com/Genesis2001/KFIRCBot/blob/master/Classes/KFIRC.uc
 
 
 ## Optional
