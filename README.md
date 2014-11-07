@@ -4,6 +4,7 @@ KFIRCBot
 [Killing Floor] mutator/server actor that reports current game status to an IRC channel and much more.
 
 KFIRCBot was originally created by [Fox] on 11 January 2010 and can be found [here].
+
 KFIRCBot was modified by [SnZ] on 14 September 2013 and can be found on [github].
 
 
@@ -54,7 +55,6 @@ Resolved irc.freenode.net (130.239.18.172)
 ```
 
 Keep in mind that if you won't configure bot, it will use default settings listed in [Main class].
-
 [Main class]: https://github.com/EsEnZeT/KFIRCBot/blob/master/Classes/KFIRC.uc
 
 
