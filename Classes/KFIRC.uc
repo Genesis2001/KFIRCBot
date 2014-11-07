@@ -9,15 +9,15 @@ var bool ircConnected, needReconnection, needRejoin;
 var config string ircServer, ircNick, ircChannel, ircPassword, botChar;
 var config int ircPort, Color1, Color2, Color3;
 var config bool hideIP, aO, aV, aAll, fLog, bDebug, rDemo;
-const VERSION = "107";
+const VERSION = "1.08";
 
 
 function postBeginPlay() {
 	Super.postBeginPlay();
-	log("[+] Starting KFIRCBot version:" @ VERSION @ "(Modified by Genesis2001)");
-	log("[+] SnZ - snz@spinacz.org");
-	log("[+] Fox - http://www.epnteam.net/");
+	log("[+] Starting KFIRCBot version:" @ VERSION);
 	log("[+] Genesis2001 - http://www.cncfps.com");
+    log("[+] SnZ - snz@spinacz.org");
+	log("[+] Fox - http://www.epnteam.net/");
 	ircMakeConnection();
 }
 

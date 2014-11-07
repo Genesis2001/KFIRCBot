@@ -132,9 +132,9 @@ function ProcessLine(string msg) {
 				fLog = KFIRC(Owner).Default.fLog;
 			}
 
-			if (Data[0] ~= "!s") {
+			if (Data[0] ~= "!msg") {
 				fLog = True;
-				bmsg = "(" $ ircNick $ "@IRC)" @ Mid(msg, InStr(Locs(msg), ":!s") + 4);
+				bmsg = "(" $ ircNick $ "@IRC):" @ Mid(msg, InStr(Locs(msg), ":!msg") + 6);
 				KFIRC(Owner).spec.MsgSend(bmsg);
 			}
 
@@ -151,10 +151,16 @@ function ProcessLine(string msg) {
 
 			if (Data[0] ~= "!help") {
 				fLog = True;
-				ircSend(col(KFIRC(Owner).Default.Color1) $ "!status  -  " $ col(KFIRC(Owner).Default.Color2) $ "force show current game status.");
-				ircSend(col(KFIRC(Owner).Default.Color1) $ "!s <message>  -  " $ col(KFIRC(Owner).Default.Color2) $ "send message through bot to active game.");
-				ircSend(col(KFIRC(Owner).Default.Color1) $ "!log <1/0>  -  " $ col(KFIRC(Owner).Default.Color2) $ "ON/OFF logging active gameplay events to channel.");
+				ircSend("!status or !gi  -  force show current game status.");
+				ircSend("!msg <message>  -  send message through bot to active game.");
+				ircSend("!log <1/0>  -  ON/OFF logging active gameplay events to channel.");
+				ircSend("!version  -  Displays a message about the version of the bot.");
 				fLog = KFIRC(Owner).Default.fLog;
+			}
+            
+			if (Data[0] ~= "!version") {
+				ircSend("I'm running KFIRCBot v" $ KFIRC(Owner).VERSION $ ". Licensed under GPL.");
+				ircSend("Download at: https://github.com/Genesis2001/KFIRCBot/");
 			}
 		}
 	}
