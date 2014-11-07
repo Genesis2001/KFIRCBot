@@ -14,9 +14,10 @@ const VERSION = "107";
 
 function postBeginPlay() {
 	Super.postBeginPlay();
-	log("[+] Starting KFIRCBot version:" @ VERSION);
+	log("[+] Starting KFIRCBot version:" @ VERSION @ "(Modified by Genesis2001)");
 	log("[+] SnZ - snz@spinacz.org");
 	log("[+] Fox - http://www.epnteam.net/");
+	log("[+] Genesis2001 - http://www.cncfps.com");
 	ircMakeConnection();
 }
 

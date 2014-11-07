@@ -85,14 +85,17 @@ function bool CheckPerms(string msg, string ircNick) {
 		return True;
 	} else {
 		for (i = 0; i < users.Length; ++i) {
-			if (InStr("@%+", Left(users[i], 1)) != -1) {
+			if (InStr("~&@%+", Left(users[i], 1)) != -1) {
 				ircNickT = Mid(users[i], 1);
 			}
 
 			if (ircNickT == ircNick) {
-				if (KFIRC(Owner).Default.aO && (Left(users[i], 1) == "@" || Left(users[i], 1) == "%")) {
+				if (KFIRC(Owner).Default.aO && (Left(users[i], 1) == "~" || Left(users[i], 1) == "&" || Left(users[i], 1) == "@" || Left(users[i], 1) == "%"))
+                {
 					return True;
-				} else if (KFIRC(Owner).Default.aV && Left(users[i], 1) == "+") {
+				}
+                else if (KFIRC(Owner).Default.aV && Left(users[i], 1) == "+")
+                {
 					return True;
 				}
 			}
@@ -122,10 +125,16 @@ function ProcessLine(string msg) {
 				KFIRC(Owner).spec.SStatus();
 				fLog = KFIRC(Owner).Default.fLog;
 			}
+            
+			if (Data[0] ~= "!gi") {
+				fLog = True;
+				KFIRC(Owner).spec.SStatus();
+				fLog = KFIRC(Owner).Default.fLog;
+			}
 
 			if (Data[0] ~= "!s") {
 				fLog = True;
-				bmsg = Mid(msg, InStr(Locs(msg), ":!s") + 4);
+				bmsg = "(" $ ircNick $ "@IRC)" @ Mid(msg, InStr(Locs(msg), ":!s") + 4);
 				KFIRC(Owner).spec.MsgSend(bmsg);
 			}
 

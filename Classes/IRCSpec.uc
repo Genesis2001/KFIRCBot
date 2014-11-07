@@ -97,7 +97,8 @@ function string getGameLength() {
 	}	
 }
 
-function string getGameDifficulty() {
+function string getGameDifficulty()
+{
 	if (KFGameType(Level.Game).GameDifficulty >= 7.0)
 		return "Hell on Earth";
 	else if (KFGameType(Level.Game).GameDifficulty >= 5.0)
@@ -108,6 +109,8 @@ function string getGameDifficulty() {
 		return "Normal";
 	else if (KFGameType(Level.Game).GameDifficulty == 1.0)
 		return "Beginner";
+    else
+        return "Unknown";
 }
 
 function string Duration(int dtime) {
@@ -146,13 +149,13 @@ function Timer() {
 		++waveTime;
 	}
 
-	if (KFGameType(Level.Game).bWaveInProgress == False && KFGameType(Level.Game).bWaveBossInProgress == False && KFGameType(Level.Game).WaveNum > 0 && endWaveAnnounced == False && lastWave == True) {
-		ircSend(col(KFIRC(Owner).Default.Color1) $ "FINAL Wave:" @ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).WaveNum @ col(KFIRC(Owner).Default.Color1) $ "ended. Wave Time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(waveTime));
-		ircSend(" ");
-		SStatus();
-		ircSend(col(KFIRC(Owner).Default.Color1) $ "Total game time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(KFGameType(Level.Game).ElapsedTime));
-		endWaveAnnounced = True;
-	}
+//	if (KFGameType(Level.Game).bWaveInProgress == False && KFGameType(Level.Game).bWaveBossInProgress == False && KFGameType(Level.Game).WaveNum > 0 && endWaveAnnounced == False && lastWave == True) {
+//		ircSend(col(KFIRC(Owner).Default.Color1) $ "FINAL Wave:" @ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).WaveNum @ col(KFIRC(Owner).Default.Color1) $ "ended. Wave Time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(waveTime));
+//		ircSend(" ");
+//		SStatus();
+//		ircSend(col(KFIRC(Owner).Default.Color1) $ "Total game time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(KFGameType(Level.Game).ElapsedTime));
+//		endWaveAnnounced = True;
+//	}
 
 	if (KFGameType(Level.Game).bWaveInProgress == False && KFGameType(Level.Game).bWaveBossInProgress == False && KFGameType(Level.Game).WaveNum > 0 && endWaveAnnounced == False && lastWave == False) {
 		ircSend(col(KFIRC(Owner).Default.Color1) $ "Wave:" @ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).WaveNum $ col(KFIRC(Owner).Default.Color1) $ "/" $ col(KFIRC(Owner).Default.Color2) $ KFGameType(Level.Game).FinalWave @ col(KFIRC(Owner).Default.Color1) $ "ended. Wave Time:" @ col(KFIRC(Owner).Default.Color2) $ Duration(waveTime));
@@ -178,11 +181,17 @@ function SStatus() {
 	local Controller C;
 	local int health, armor;
 
-	if (startingGameAnnounced == False) {
+	if (startingGameAnnounced == False)
+    {
 		ircSend("Game not in progress:");
-	} else {
+	}
+    else
+    {
 		ircSend("Current Status:");
 	}
+    
+    //ircSend();
+    
 	ircSend(col(KFIRC(Owner).Default.Color1) $ "Map:" @ col(KFIRC(Owner).Default.Color2) $ gMapName() @ col(KFIRC(Owner).Default.Color1) $ "Game Length:" @ col(KFIRC(Owner).Default.Color2) $ getGameLength() $ "(" $ KFGameType(Level.Game).FinalWave $ ")" @ col(KFIRC(Owner).Default.Color1) $ "Difficulty:" @ col(KFIRC(Owner).Default.Color2) $ getGameDifficulty() @ col(KFIRC(Owner).Default.Color1) $ "Elapsed:" @ col(KFIRC(Owner).Default.Color2) $ Duration(KFGameType(Level.Game).ElapsedTime));
 
 	for (C=Level.ControllerList; C!=None; C=C.NextController) {
