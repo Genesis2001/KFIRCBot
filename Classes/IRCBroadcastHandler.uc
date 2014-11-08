@@ -19,13 +19,13 @@ function Broadcast(Actor Sender, coerce string Msg, optional name Type) {
     {
 		if (Type == 'Say')
         {
-			ircSend(col(KFIRC(Owner).Default.Color1) $ PlayerController(Sender).PlayerReplicationInfo.PlayerName $ ":" @ col(KFIRC(Owner).Default.Color2) $ Msg);
+			ircSend(col(KFIRC(Owner).Default.Color2) $ PlayerController(Sender).PlayerReplicationInfo.PlayerName $ chr(3) $ ":" @ Msg);
 		}
 	}
 
 	if (Type == 'DeathMessage')
     {
-		ircSend(col(KFIRC(Owner).Default.Color3) $ "[KILL]" @ col(KFIRC(Owner).Default.Color2) $ Msg);
+		ircSend(col(KFIRC(Owner).Default.Color3) $ "[Death]" @ col(KFIRC(Owner).Default.Color2) $ Msg);
 	}
 
 	Super.Broadcast(Sender, Msg, Type);
@@ -36,7 +36,7 @@ function BroadcastTeam(Controller Sender, coerce string Msg, optional name Type)
     {
 		if (Type == 'TeamSay')
         {
-			ircSend(col(KFIRC(Owner).Default.Color1) $ PlayerController(Sender).PlayerReplicationInfo.PlayerName $ ":" @ col(KFIRC(Owner).Default.Color2) $ Msg);
+			ircSend(col(KFIRC(Owner).Default.Color2) $ PlayerController(Sender).PlayerReplicationInfo.PlayerName $ chr(3) $ ":" @ Msg);
 		}
 	}
 	

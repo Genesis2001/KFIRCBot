@@ -43,7 +43,7 @@ event Timer() {
 
 function CheckPlayerList() {
 	local int pLoc, magicint;
-	local string ipstr, pip, ts;
+	local string ipstr, pip, ts, playerIP, playerPort;
 	local PlayerController PC;
 	local Controller C;
 
@@ -67,7 +67,8 @@ function CheckPlayerList() {
 		if (KFIRC(Owner).Default.hideIP) {
 			pip = "?";
 		} else {
-			pip = ipstr;
+            Divide(ipstr, ":", playerIP, playerPort);
+			pip = playerIP;
 		}		
 				
 		if (ipstr != "") {
@@ -78,13 +79,16 @@ function CheckPlayerList() {
 				cache[pLoc].spec = PC.PlayerReplicationInfo.bOnlySpectator;
 				cache[pLoc].ip = ipstr;
 				cache[pLoc].name = PC.PlayerReplicationInfo.PlayerName;
-				ircSend(col(KFIRC(Owner).Default.Color1) $ "Player joins:" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName @ col(KFIRC(Owner).Default.Color1) $ "IP:" @ col(KFIRC(Owner).Default.Color2) $ pip);
+                ircSend("Player" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName $ chr(3) @ "joined the game. [IP: " $ pip $ "]");
+				//ircSend(col(KFIRC(Owner).Default.Color1) $ "Player joins:" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName @ col(KFIRC(Owner).Default.Color1) $ "IP:" @ col(KFIRC(Owner).Default.Color2) $ pip);
 			}
 			else if (cache[pLoc].name != PC.PlayerReplicationInfo.PlayerName) {
 				if (ts == "") {
 					ts = Timestamp();
 				}
-				ircSend(col(KFIRC(Owner).Default.Color1) $ "Player joins:" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName @ col(KFIRC(Owner).Default.Color1) $ "IP:" @ col(KFIRC(Owner).Default.Color2) $ pip);
+                
+                ircSend("Player" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName $ chr(3) @ "joined the game. [IP: " $ pip $ "]");
+				//ircSend(col(KFIRC(Owner).Default.Color1) $ "Player joins:" @ col(KFIRC(Owner).Default.Color2) $ PC.PlayerReplicationInfo.PlayerName @ col(KFIRC(Owner).Default.Color1) $ "IP:" @ col(KFIRC(Owner).Default.Color2) $ pip);
 				cache[pLoc].name = PC.PlayerReplicationInfo.PlayerName;
 			}
 			cache[pLoc].magic = magicint;
@@ -98,7 +102,8 @@ function CheckPlayerList() {
 				ts = Timestamp();
 			}
 			cache[pLoc].magic = -1;
-			ircSend(col(KFIRC(Owner).Default.Color1) $ "Player left:" @ col(KFIRC(Owner).Default.Color2) $ cache[pLoc].name);
+            ircSend("Player" @ col(KFIRC(Owner).Default.Color2) $ cache[pLoc].name $ chr(3) @ "left the game.");
+			//ircSend(col(KFIRC(Owner).Default.Color1) $ "Player left:" @ col(KFIRC(Owner).Default.Color2) $ cache[pLoc].name);
 		}
 	}
 }
