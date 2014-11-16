@@ -8,7 +8,7 @@ var int waveTime;
 
 function InitPlayerReplicationInfo() {
 	Super.InitPlayerReplicationInfo();
-	PlayerReplicationInfo.PlayerName = "IRC";
+	PlayerReplicationInfo.PlayerName = "Host";
 	PlayerReplicationInfo.CharacterName = Class'KFIRC'.Default.botChar;
 	PlayerReplicationInfo.bAdmin = True; // hide from kick list
 }
